@@ -5,19 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TaskDetailsActivity">
+    tools:context=".TaskDetailsActivity">\
+    <TextView
+        android:id="@+id/details_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Студенчиский билет"
+        android:textSize="40sp" />
 
     <EditText
         android:id="@+id/details_title"
-        android:layout_width="match_parent"
-        android:layout_height="76sp"
-        android:hint="Заголовок"
-        android:textSize="40sp"/>
+        android:layout_width="411dp"
+        android:layout_height="63dp"
+        android:hint="Имя"
+        android:textSize="40sp" />
+
     <EditText
         android:id="@+id/details_description"
         android:layout_width="match_parent"
         android:layout_height="76sp"
-        android:hint="Описание"
+        android:hint="Фамилия"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/details_adress"
+        android:layout_width="match_parent"
+        android:layout_height="76sp"
+        android:hint="Дата рождения:чч.мм.гг"
+        android:textSize="35sp"/>
+    <EditText
+        android:id="@+id/details_hobbi"
+        android:layout_width="match_parent"
+        android:layout_height="76sp"
+        android:hint="Факультет"
+        android:textSize="40sp"/>
+    <EditText
+        android:id="@+id/details_nomer"
+        android:layout_width="match_parent"
+        android:layout_height="76sp"
+        android:hint="Студенчиский ID"
         android:textSize="40sp"/>
 
     <CheckBox

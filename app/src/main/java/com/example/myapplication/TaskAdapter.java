@@ -8,9 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Date;
-public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
+
+public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> implements ITaskViewholderListener{
     ArrayList<Task> tasks;
+    ITaskAdapterListener listener;
 
     public TaskAdapter(){
         tasks=new ArrayList<>();
@@ -27,7 +28,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(parent.getContext());
         View view= inflater.inflate(R.layout.view_holder_task,parent, false);
-        return new TaskViewHolder(view);
+       TaskViewHolder vh = new TaskViewHolder(view);
+       vh.listener =listener;
+        return  vh;
     }
 
     @Override
@@ -39,5 +42,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     @Override
     public int getItemCount() {
         return tasks.size();
+    }
+    @Override
+    public void find(int id){
+        for (int i = 0; i < tasks.size(); i++) {
+            if(id==tasks.get(i).id){
+                listener.openDetails(tasks.get(id));
+
+
+            }
+
+        }
     }
 }

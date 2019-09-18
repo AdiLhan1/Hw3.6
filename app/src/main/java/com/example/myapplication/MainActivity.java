@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ITaskAdapterListener {
     TaskAdapter adapter;
 
     @Override
@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.task_list);
 
-       adapter = new TaskAdapter();
+         adapter = new TaskAdapter();
+         adapter.listener = this;
         recyclerView.setAdapter(adapter);
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
@@ -33,12 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void openDetails(Task task) {
-        Intent intent = new Intent(MainActivity.this, TaskDetailsActivity.class);
-        intent.putExtra(TaskDetailsActivity.DETAILS_KEY, task);
-        startActivity(intent);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -49,8 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
 
-
-
+    @Override
+    public void openDetails(Task task) {
+        Intent intent = new Intent(MainActivity.this, NewActivity.class);
+        intent.putExtra(TaskDetailsActivity.DETAILS_KEY, task);
+        startActivity(intent);
     }
 }
